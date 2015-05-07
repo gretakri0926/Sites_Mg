@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <sales_reps_adminhtml_sales_reps_index>
+        <reference name="content">
+            <block type="sales_reps/adminhtml_sales_reps" name="sales_reps" />
+        </reference>
+    </sales_reps_adminhtml_sales_reps_index>
+</layout>

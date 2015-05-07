@@ -1,0 +1,324 @@
+<?php $skin = "https://fin-s.com/store/skin/frontend/default/default/fins-product/"; ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?
+if(!$_product->getCategoryIds())
+return; // Don't show Previous and Next if product is not in any category
+ 
+$cat_ids = $_product->getCategoryIds(); // get all categories where the product is located
+$cat = Mage::getModel('catalog/category')->load( $cat_ids[0] ); // load first category, you should enhance this, it works for me
+ 
+$order = Mage::getStoreConfig('catalog/frontend/default_sort_by');
+$direction = 'asc'; // asc or desc
+ 
+$category_products = $cat->getProductCollection()->addAttributeToSort($order, $direction);
+$category_products->addAttributeToFilter('status',1); // 1 or 2
+$category_products->addAttributeToFilter('visibility',4); // 1.2.3.4
+ 
+$cat_prod_ids = $category_products->getAllIds(); // get all products from the category
+$_product_id = $_product->getId();
+ 
+$_pos = array_search($_product_id, $cat_prod_ids); // get position of current product
+$_next_pos = $_pos+1;
+$_prev_pos = $_pos-1;
+ 
+// get the next product url
+if( isset($cat_prod_ids[$_next_pos]) ) {
+$_next_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_next_pos] );
+} else {
+$_next_prod = Mage::getModel('catalog/product')->load( reset($cat_prod_ids) );
+}
+// get the previous product url
+if( isset($cat_prod_ids[$_prev_pos]) ) {
+$_prev_prod = Mage::getModel('catalog/product')->load( $cat_prod_ids[$_prev_pos] );
+} else {
+$_prev_prod = Mage::getModel('catalog/product')->load( end($cat_prod_ids) );
+}
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<?php $its_fin = false; $cat = $_product->getCategoryIds(); for($i=0; $i<count($cat); $i++){ if($cat[$i] == 16){ $its_fin = true; }} ?>
+<div class="breadcrumbsWrapper product">
+
+						<div class="breadcrumbs">
+							<ul>
+								<li class="home">
+									<a href="http://fin-s.com/store/index.php/" title="Go to Home Page">Home</a>
+									<span>/ </span>
+								</li>
+								<li class="cms_page">
+									<strong><?php if ($its_fin):?>Fins<?php else: ?>Products<?php endif; ?></strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="product-view-breadcrumb-description" <?php if (!$its_fin):?>style="margin-left:380px;"<?php endif; ?>><?php if ($its_fin):?>All fins utilize the Fin-S patented SpringLock™ Toolless Fin Technology. They are manufactured from the highest quality materials using the latest manufacturing processes to ensure great product.<? else: ?>All Fin-S products are made using highest quality materials and best manufacturing practices to bring you a really great product that we`re proud of.<? endif;?></div>
+
+					<!-- tonikolaev@gmail.com -->
+					<div class="col-main-links">
+						<a href="http://www.fin-s.com/store/">ReturnToProducts</a>&nbsp;&nbsp;
+						<a href="<?php print $_prev_prod->getUrlPath(); if($search_parameter):?>?search=1<?php endif;?>">&laquo;Previous</a>&nbsp;&nbsp;
+						<a href="<?php print $_next_prod->getUrlPath(); if($search_parameter):?>?search=1<?php endif;?>">Next&raquo;</a>
+					</div>	
+					<div class="product-view" itemscope itemtype="http://schema.org/Product">
+					
+					<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+					<div class="no-display">
+						<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+						<input type="hidden" name="related_product" id="related-products-field" value="" />
+					</div>
+					
+						<div class="product-view-container">
+							<div class="product-view-left">
+							<?php if ($its_fin): ?>
+								<div class="fin-title">Specs</div>
+								<div class="specs-container">
+									<div class="specs-left">
+										<?php
+												$gallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+																								
+												foreach ($gallery as $img):	
+													if ($img->label == "Badge"):
+														$badge = $img->url;														
+													endif;
+												endforeach;
+										?>
+									
+										<a href="#"><img src="<?=$badge?>" /></a>
+									</div>
+									<div class="specs-right">
+										<div style="display:none">
+											<img src="<?=$skin?>fin-type.png" />
+											<img src="<?=$skin?>fin-size.png" />
+											<img src="<?=$skin?>fin-material.png" />
+											<img src="<?=$skin?>fin-base.png" />
+											<img src="<?=$skin?>fin-justgage.png" />
+										</div>
+										<table class="specs">
+											<tr>
+												<td class="name">Model:</td>
+												<td class="value"><?=$_product->getResource()->getAttribute('name_short')->getFrontend()->getValue($_product);?></td>
+											</tr>
+											<tr data-img="<?=$skin?>fin-type.png">
+												<td class="name">Type:</td>
+												<td class="value"><?=Mage::getModel('catalog/product')
+->load($_product->getId())
+->getAttributeText('fin_type');?></td>
+											</tr>
+											<tr data-img="<?=$skin?>fin-size.png">
+												<td class="name">Size:</td>
+												<td class="value"><?=Mage::getModel('catalog/product')
+->load($_product->getId())
+->getAttributeText('fin_size');?></td>
+											</tr>
+											<tr data-img="<?=$skin?>fin-material.png">
+												<td class="name">Material:</td>
+												<td class="value"><?=Mage::getModel('catalog/product')
+->load($_product->getId())
+->getAttributeText('fin_material');?></td>
+											</tr>
+											<tr>
+												<td class="name">Color:</td>
+												<td class="value"><?=Mage::getModel('catalog/product')
+->load($_product->getId())
+->getAttributeText('fin_color');?></td>
+											</tr>
+											
+											<?php
+												$base_s = $_product->getResource()->getAttribute('fin_base_s')->getFrontend()->getValue($_product);
+												$depth_s = $_product->getResource()->getAttribute('fin_depth_s')->getFrontend()->getValue($_product);
+												
+												$base_c = $_product->getResource()->getAttribute('fin_base_c')->getFrontend()->getValue($_product);
+												$depth_c = $_product->getResource()->getAttribute('fin_depth_c')->getFrontend()->getValue($_product);
+												
+												if (!strcmp($base_s,$base_c) || empty($base_c)):
+													$base = $base_s;													
+												else:
+													$base = $base_s.' / '.$base_c;
+												endif;
+												
+												if (!strcmp($depth_s,$depth_c) || empty($base_c)):
+													$depth = $depth_s;
+												else:													
+													$depth = $depth_s.' / '.$depth_c;
+												endif;
+											?>
+											
+											
+											<tr data-img="<?=$skin?>fin-base.png">
+												<td class="name">Base<!-- <span class="small">c/s</span> -->:</td>
+												<td class="value"><?=$base?></td>
+											</tr>
+											<tr data-img="<?=$skin?>fin-base.png">
+												<td class="name">Depth<!-- <span class="small">c/s</span> -->:</td>
+												<td class="value"><?=$depth?></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							<? endif; ?>
+								
+						<?php if (!$its_fin): ?>
+							<div class="product-view-details">
+								<div class="fin-title">Details</div>
+								<p itemprop="description">
+									<?php echo $_product->getDescription(); ?>
+								</p>
+							</div>
+						<?php endif; ?>
+								
+								
+								<div class="product-small-views" <?php if (!$its_fin): ?>style="float:left;"<? endif; ?>>
+									<?php echo $this->getChildHtml('media') ?>
+									
+								</div>
+								
+							<?php if ($its_fin): ?>
+								<div class="justgage" data-img="<?=$skin?>fin-justgage.png">
+									<div class="item" id="drive"></div>
+									<div class="item" id="pivot"></div>
+									<div class="item" id="release"></div>
+									<script>
+									jQuery(window).load(function(){
+									
+									  var d = new JustGage({
+									    id: "drive", 
+									    value: <?=$_product->getResource()->getAttribute('fin_drive')->getFrontend()->getValue($_product);?>, 
+									    min: 0,
+									    max: 5,
+									    title: "Drive",
+									    titleFontSize: "24px",
+									    valueFontSize: "24px",
+									    labelFontSize: "24px",
+									    startAnimationTime: 1200
+									  }); 
+									  var p = new JustGage({
+									    id: "pivot", 
+									    value: <?=$_product->getResource()->getAttribute('fin_pivot')->getFrontend()->getValue($_product);?>, 
+									    min: 0,
+									    max: 5,
+									    title: "Pivot",
+									    startAnimationTime: 1200
+									  }); 
+									  var r = new JustGage({
+									    id: "release", 
+									    value: <?=$_product->getResource()->getAttribute('fin_release')->getFrontend()->getValue($_product);?>, 
+									    min: 0,
+									    max: 5,
+									    title: "Release",
+									    startAnimationTime: 1200
+									  }); 
+									 });
+									</script>
+									<div class="clear"></div>
+									<span>Fin Performance</span>
+								</div>
+							<? endif; ?>
+							</div>
+							<div class="product-view-right">
+								<div class="fin-title" itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></div>
+								<div class="product-photo">
+									<img itemprop="image" src="<?=$this->helper('catalog/image')->init($_product, 'image')->resize(555, 555);?>" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" title="" width="555" height="555" />
+									<a href="<?=$this->helper('catalog/image')->init($_product, 'image')->resize(555, 555);?>" alt="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" title="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>"></a>
+								</div>
+								<script type="text/javascript">
+
+								</script>
+							</div>
+						</div>
+						
+						<?php if ($its_fin): ?>
+							<div class="product-view-details">
+								<div class="fin-title">Details</div>
+								<p itemprop="description">
+									<?php echo $_product->getDescription(); ?>
+								</p>
+							</div>
+						<?php else: ?>
+							<div class="product-view-details">
+								<div class="fin-title" style="border:none;"></div>
+								<p itemprop="description">
+									<?php //echo $_product->getDescription(); ?>
+								</p>
+							</div>
+						<?php endif; ?>
+						
+						<div class="product-view-specs" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+							<div class="fin-title">Buy</div>
+							
+						<?php if($_product->isSaleable()): ?>	
+							<table class="specs">
+								<tr>
+									<td class="name">Price:</td>
+									<td class="value" itemprop="price"><?=Mage::helper('core')->currency($_product->getPrice())?></td>
+								</tr>
+							</table>
+							
+							<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+								<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+							<?php endif;?>
+							
+							<a class="add-to-cart" onclick="productAddToCartForm.submit(this)">Add to cart</a>
+							
+							<?php //echo $this->getChildHtml('addtocart') ?>						
+							
+							<?php echo $this->getChildHtml('addto') ?>
+							<br />
+							
+						
+						<? else: ?>
+							<?php echo $this->getChildHtml('addto') ?>
+						<? endif; ?>
+						</div>
+						
+						<? echo $this->getLayout()->createBlock('catalog/product_list_related')->setTemplate('catalog/product/list/related.phtml')->toHtml(); ?>
+						
+						</form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+					</div>
+					<!-- tonikolaev@gmail.com -->

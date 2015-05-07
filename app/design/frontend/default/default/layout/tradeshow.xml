@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <action method="setHeaderTitle" translate="title"><title>LOGIN PAGE</title></action>
+    </default>
+
+    <tradeshow_index_index>
+        <reference name="root">
+            <action method="setHeaderTitle" translate="title"><title>LOGIN PAGE</title></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="tradeshow/tradeshow" name="tradeshow" template="tradeshow/tradeshow.phtml" />
+        </reference>
+    </tradeshow_index_index>
+
+    <tradeshow_index_create>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="tradeshow/tradeshow" name="tradeshow" template="tradeshow/tradeshow.phtml" />
+        </reference>
+    </tradeshow_index_create>
+
+    <tradeshow_lead_create>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="tradeshow/tradeshow" name="tradeshow" template="tradeshow/tradeshow.phtml" />
+        </reference>
+    </tradeshow_lead_create>
+</layout> 

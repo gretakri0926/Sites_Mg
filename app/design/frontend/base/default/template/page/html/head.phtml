@@ -1,0 +1,72 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!-- <link rel="stylesheet" href="https://www.fin-s.com/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="https://www.fin-s.com/css/blueprint/print.css" type="text/css" media="print" /> -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<script type="text/javascript" src="https://www.fin-s.com/js/cufon-yui.js"></script>
+        <script type="text/javascript" src="https://www.fin-s.com/js/Karbon_600.font.js"></script>
+		<script type="text/javascript" src="https://www.fin-s.com/js/Karbon_700.font.js"></script>
+        <script type="text/javascript" src="https://www.fin-s.com/js/Karbon_italic_700.font.js"></script>
+        <script type="text/javascript" src="https://www.fin-s.com/js/Karbon_Slab_Stencil_400.font.js"></script>
+        <script type="text/javascript" src="https://www.fin-s.com/js/Karbon_400.font.js"></script>
+        <script type="text/javascript" src="https://www.fin-s.com/js/Karbon_Slab_Stencil_700.font.js"></script>
+        <script type="text/javascript">
+				 Cufon.replace('h2', {fontFamily:'Karbon Slab Stencil',fontWeight:'400'});
+				 Cufon.replace('#menu', {hover:true, fontFamily:'Karbon',fontWeight:'700' } );
+				 Cufon.replace('#mainPara', {fontFamily:'Karbon',fontWeight:'700', fontStyle:'italic', } );
+				 Cufon.replace('p', {fontFamily:'Karbon',fontWeight:'600', fontStyle:'normal',}  );
+				 Cufon.replace('h1', {fontFamily:'Karbon',fontWeight:'400', fontStyle:'normal',}  );
+				 Cufon.replace('.team-info>h1', {fontFamily:'Karbon Slab Stencil',fontWeight:'700',});
+        </script>
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+<script type="text/javascript" src="https://www.fin-s.com/store/js/amasty/amshopby/amshopby.js"></script>
+<script type="text/javascript" src="https://www.fin-s.com/store/js/amasty/amshopby/amshopby-ajax.js"></script>
+<?php header('Access-Control-Allow-Origin: *'); ?>
+<?php header('Access-Control-Allow-Methods: *'); ?>
+<?php header('Access-Control-Allow-Headers: X-Prototype-Version'); ?>
+<?php header('Access-Control-Allow-Headers: X-Requested-With'); ?>
+<?php header('Access-Control-Allow-Headers: X-JSON'); ?>
+

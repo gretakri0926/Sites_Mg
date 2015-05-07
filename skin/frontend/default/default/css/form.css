@@ -1,0 +1,13 @@
+.select {
+	position: absolute;
+	width: 160px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	height: 26px;
+	padding: 0 24px 0 11px;
+	/*color: #fff;*/
+	line-height: 26px;
+	background: url(../images/select.png) no-repeat;
+	overflow: hidden;
+	font-family: 'karbon_mediumregular';
+	color:#575756;
+	font-size: 14px;
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <surfers_adminhtml_surfers_index>
+        <reference name="content">
+            <block type="surfers/adminhtml_surfers" name="surfers" />
+        </reference>
+    </surfers_adminhtml_surfers_index>
+</layout>

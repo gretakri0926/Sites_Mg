@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Fins
+ * @package    Fins_Sales_reps
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Fins_Sales_reps>
+            <version>0.1.0</version>
+        </Fins_Sales_reps>
+    </modules>
+    <frontend>
+        <routers>
+            <sales_reps>
+                <use>standard</use>
+                <args>
+                    <module>Fins_Sales_reps</module>
+                    <frontName>sales_reps</frontName>
+                </args>
+            </sales_reps>
+        </routers>
+        <layout>
+            <updates>
+                <sales_reps>
+                    <file>sales_reps.xml</file>
+                </sales_reps>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<sales_reps>
+				<use>admin</use>
+				<args>
+					<module>Fins_Sales_reps</module>
+					<frontName>sales_reps</frontName>
+				</args>
+			</sales_reps>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<sales_reps module="sales_reps">
+				<title>Sales_reps</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="sales_reps">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>sales_reps/adminhtml_sales_reps</action>
+					</items>
+				</children>
+			</sales_reps>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Fins_Sales_reps>
+							<title>Sales_reps Module</title>
+							<sort_order>10</sort_order>
+						</Fins_Sales_reps>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<sales_reps>
+					<file>sales_reps.xml</file>
+				</sales_reps>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <sales_reps>
+                <class>Fins_Sales_reps_Model</class>
+                <resourceModel>sales_reps_mysql4</resourceModel>
+            </sales_reps>
+            <sales_reps_mysql4>
+                <class>Fins_Sales_reps_Model_Mysql4</class>
+                <entities>
+                    <sales_reps>
+                        <table>sales_reps</table>
+                    </sales_reps>
+                </entities>
+            </sales_reps_mysql4>
+        </models>
+        <resources>
+            <sales_reps_setup>
+                <setup>
+                    <module>Fins_Sales_reps</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </sales_reps_setup>
+            <sales_reps_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </sales_reps_write>
+            <sales_reps_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </sales_reps_read>
+        </resources>
+        <blocks>
+            <sales_reps>
+                <class>Fins_Sales_reps_Block</class>
+            </sales_reps>
+        </blocks>
+        <helpers>
+            <sales_reps>
+                <class>Fins_Sales_reps_Helper</class>
+            </sales_reps>
+        </helpers>
+    </global>
+</config>

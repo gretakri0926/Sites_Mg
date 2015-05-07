@@ -1,0 +1,64 @@
+<script type="text/javascript">
+
+	 Cufon.replace('div.tags h4', {fontFamily:'Karbon',fontWeight:'700', fontStyle:'normal'}  );
+	 Cufon.replace('.fin-s-blog .postTitle h3', {fontFamily:'Karbon',fontWeight:'600', fontStyle:'normal'}  );
+	 Cufon.replace('.tagcloud .tag-count', {fontFamily:'Karbon Slab Stencil',fontWeight:'400', fontStyle:'normal'}  );
+	 Cufon.replace('div.tags a', {fontFamily:'Karbon',fontWeight:'600', fontStyle:'normal', hover:true}  );
+	 Cufon.replace('.postContent a', {fontFamily:'Karbon',fontWeight:'600', fontStyle:'normal', hover:true}  );
+
+</script>
+<div class="fin-s-blog">
+  <!--
+<div class="fin-s-page-title">
+    <h1>NEWS FEED</h1>
+    <p>Stay tuned on all the latest happenings. We are constantly putting on events, promotions, and more.</p>
+  </div>
+-->
+  <div class="breadcrumbsWrapper product">
+		<div class="breadcrumbs">
+			<ul>
+				<li class="cms_page">
+					<strong>NEWS FEED</strong>
+				</li>
+			</ul>
+		</div>
+  </div>
+<div class="product-view-breadcrumb-description" style="margin-left:400px">Stay tuned in with all the latest Fin-S happenings. We are constantly doing exciting things like event, promotions, new video, and photos.</div>
+
+  <?php $posts = $this->getPosts(); ?>
+  <?php foreach ($posts as $post): ?>
+  <div class="postWrapper">
+    <div class="fin-s-blog-post">
+      <div class="postTitle">
+        <h3><?php echo substr($post->getCreatedTime(),0,-11); ?></h3>
+        <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle();?></a></h2>
+      </div>
+      <div class="postContent"><?php echo $post->getPostContent(); ?>
+        <div class="clear"></div> 
+      </div>
+
+      <?php echo $this->getBookmarkHtml($post) ?>
+      <div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
+      <?php/*
+ 
+      <div class="postDetails">
+        <?php if($this->getCommentsEnabled()): ?>
+        <?php echo $post->getCommentCount(); ?> <a  href="<?php echo $post->getAddress(); ?>#commentBox" >Comments</a> | 
+        <?php endif; ?>
+        <?php $postCats = $post->getCats(); ?>
+        <?php if(!empty($postCats)):?>
+        <?php echo Mage::helper('blog')->__('Posted in');?>
+        <?php foreach($postCats as $title=>$url): ?>
+        <a href="<?php echo $url; ?>"><?php echo $title; ?></a> 
+        <?php endforeach;?> 
+        <?php else:?>
+        <?php echo Mage::helper('blog')->__('Posted');?>
+        <?php endif;?><?php echo$this->__("By");?> <?php echo $post->getUser(); ?>
+      </div>
+*/
+      ?>
+    </div>
+  </div>
+  <?php endforeach; ?> 
+  <?php $this->getPages(); ?>
+</div><!-- end of .fin-s-blog -->

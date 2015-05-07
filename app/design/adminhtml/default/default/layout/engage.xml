@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <engage_adminhtml_engage_index>
+        <reference name="content">
+            <block type="engage/adminhtml_engage" name="engage" />
+        </reference>
+    </engage_adminhtml_engage_index>
+</layout>

@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Fins
+ * @package    Fins_Commission
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Fins_Commission>
+            <version>0.1.0</version>
+        </Fins_Commission>
+    </modules>
+    <frontend>
+        <routers>
+            <commission>
+                <use>standard</use>
+                <args>
+                    <module>Fins_Commission</module>
+                    <frontName>commission</frontName>
+                </args>
+            </commission>
+        </routers>
+        <layout>
+            <updates>
+                <commission>
+                    <file>commission.xml</file>
+                </commission>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<commission>
+				<use>admin</use>
+				<args>
+					<module>Fins_Commission</module>
+					<frontName>commission</frontName>
+				</args>
+			</commission>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<commission module="commission">
+				<title>Commission</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="commission">
+						<title>View Commissions</title>
+						<sort_order>0</sort_order>
+						<action>commission/adminhtml_commission</action>
+					</items>
+				</children>
+			</commission>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Fins_Commission>
+							<title>Commission Module</title>
+							<sort_order>10</sort_order>
+						</Fins_Commission>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<commission>
+					<file>commission.xml</file>
+				</commission>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <commission>
+                <class>Fins_Commission_Model</class>
+                <resourceModel>commission_mysql4</resourceModel>
+            </commission>
+            <commission_mysql4>
+                <class>Fins_Commission_Model_Mysql4</class>
+                <entities>
+                    <commission>
+                        <table>commission</table>
+                    </commission>
+                </entities>
+            </commission_mysql4>
+        </models>
+        <resources>
+            <commission_setup>
+                <setup>
+                    <module>Fins_Commission</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </commission_setup>
+            <commission_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </commission_write>
+            <commission_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </commission_read>
+        </resources>
+        <blocks>
+            <commission>
+                <class>Fins_Commission_Block</class>
+            </commission>
+        </blocks>
+        <helpers>
+            <commission>
+                <class>Fins_Commission_Helper</class>
+            </commission>
+        </helpers>
+    </global>
+</config>

@@ -1,0 +1,98 @@
+<div id="fin-s-team-title" class="fin-s-page-title">
+    <h1>TEAM</h1>
+    <p>We have worked with our pro team to get our fins to the highest level of performance possible. We work with only the best from all over the world in many different waves.</p>
+</div>
+
+<div class="span-24" id="fin-s-team-page">
+<?php
+
+/*
+   This shows an alternate way of loading datas from a record using the database the "Magento Way" (using blocks and controller).
+   Uncomment blocks in /app/code/local/Namespace/Module/controllers/IndexController.php if you want to use it.
+ */
+
+/*
+$object = $this->getSurfers();
+echo 'id: '.$object['test_id'].'<br/>';
+echo 'title: '.$object['name'].'<br/>';
+echo 'content: '.$object['hometown'].'<br/>';
+echo 'status: '.$object['status'].'<br/>';
+*/
+?>
+
+<?php 
+$i = 1;
+$collection = Mage::getModel('surfers/surfers')->getCollection()->addFilter('status',1);
+$collection->setPageSize(25);
+$collection->setCurPage(2);
+$size = $collection->getSize();
+$cnt = count($collection);
+?>
+
+    <div class="menu prepend-top">
+    <?php foreach ($collection as $item) { ?>
+        <?php    
+            $i = $i+1;
+            $item->setTitle($i); 
+        ?>
+        <?php if ($item->getName() != '') { ?>
+           <a href="https://www.fin-s.com/store/surfers/?t=<?php echo $item->getId(); ?>"><div class="menuBox small"><?php echo $item->getName(); ?></div></a>
+        <?php } ?>
+    <?php } ?>
+    </div>
+
+<?php
+$collection->walk('save');
+
+/*
+   This shows how to load a single record and save a change.
+   1) Note the setTitle, this corresponds to the table field name, title, and then you pass it the text to change.
+   2) Call the save() function only on a single record.
+ */
+/*
+   $object = Mage::getModel('surfers/surfers')->load(1);
+   $object->setTitle('This is a changed title');
+   $object->save();
+ */
+
+?> 
+
+    <div class="content-page team-page">
+
+<?php
+
+$teamId = $_GET['t'];
+
+if ($teamId == '') { 
+    $teamId = 1;   
+}
+/*
+   This shows how to load specific fields from a record in the database.
+   1) Note the load(15), this corresponds to saying "select * from table where table_id = 15"
+   2) You can then just use the get(fieldname) to pull specific data from the table.
+   3) If you have a field named news_id, then it becomes getNewsId, etc.
+ */
+$news = Mage::getModel('surfers/surfers')->load($teamId);
+
+?>
+
+<div class="team-info">
+<h1><?php echo $news->getName(); ?></h1>
+<h2>hometown</h2>
+<h3><?php echo $news->getHometown(); ?></h3>
+<h2>influences</h2>
+<h3><?php echo $news->getInfluences(); ?></h3>
+<h2>biggest accomplishment</h2>
+<h3><?php echo $news->getAccomplishment(); ?></h3>
+<h2>why do you ride fin-s?</h2>
+<h3><?php echo $news->getWhyRide(); ?></h3>
+<h2>what's the latest</h2>
+<a href="<?php echo $news->getTwitter(); ?>" class="team-twitter"><img src="https://www.fin-s.com/assets/twitter.png" /></a>
+</div>
+<div class="team-image">
+<img src="/store/media/<?php echo $news->getFilename(); ?>" width="325" />
+</div>
+
+
+    </div>
+</div> <!-- .span-24 -->

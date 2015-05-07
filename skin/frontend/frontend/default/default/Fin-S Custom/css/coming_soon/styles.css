@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+* {
+	margin:0;
+	padding:0;
+}
+
+ul, ol {
+	margin:0px;
+	padding:0px;
+}
+body {
+	background:#000;
+}
+
+a {
+	text-decoration:none;
+}
+
+
+h1 {
+	padding-top:70px;
+	margin-left:10px;
+	margin-bottom:50px;
+	font-size:24px;
+	font-weight:100;
+	color:#FFF;
+	text-align:center;
+}
+
+.logo {
+	padding-bottom:60px;
+}
+
+p {
+	padding-top:5px;
+	margin-bottom:0px;
+	font-size:14px;
+	font-weight:200;
+	color:#FFF;
+}
+
+.contactBtn {
+	margin:25px 88px;
+	padding:5px 2px;
+	font-size:12px;
+	text-align:center;
+	-webkit-border-radius: 18px 18px 18px 18px;
+    -moz-border-radius: 18px 18px 18px 18px;
+    border-radius:  18px 18px 18px 18px;
+	border:#666 thin solid;
+	background-image: -moz-linear-gradient(bottom, #d8d9d9, #FFF);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d8d9d9), color-stop(1, #fff));
+	-moz-box-shadow: 0px 1px 1px #666;
+-webkit-box-shadow: 0px 1px 1px #666;
+box-shadow: 0px 1px 1px #666;
+color:#666;
+
+}
+
+.contactBtn a {
+	text-decoration:none;
+}
+.contactBtn:hover {
+	background-image: -moz-linear-gradient(bottom,#EEE), #d8d9d9);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #d8d9d9));
+	
+	
+}
+
+
+
+
+

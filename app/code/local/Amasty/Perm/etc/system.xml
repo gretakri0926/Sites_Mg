@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <amperm translate="label" module="amperm">
+            <label>Sales Reps and Dealers</label>
+            <tab>amasty</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>800</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <role translate="label">
+                            <label>Role ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Restrictions for viewing customers and orders will be applied for this role only.]]></comment>                            
+                        </role>  
+                         <send_email translate="label">
+                            <label>Email Notification</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Indicate "Yes" to send a copy of the order email to the associated sales rep.]]></comment>                            
+                        </send_email>                                                                    
+                    </fields>
+                </general>                
+            </groups>
+        </amperm>
+    </sections>
+</config>

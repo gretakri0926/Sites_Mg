@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Fins
+ * @package    Fins_Tradeshow
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Fins_Tradeshow>
+            <version>0.1.0</version>
+        </Fins_Tradeshow>
+    </modules>
+    <frontend>
+        <routers>
+            <tradeshow>
+                <use>standard</use>
+                <args>
+                    <module>Fins_Tradeshow</module>
+                    <frontName>tradeshow</frontName>
+                </args>
+            </tradeshow>
+        </routers>
+        <layout>
+            <updates>
+                <tradeshow>
+                    <file>tradeshow.xml</file>
+                </tradeshow>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<tradeshow>
+				<use>admin</use>
+				<args>
+					<module>Fins_Tradeshow</module>
+					<frontName>tradeshow</frontName>
+				</args>
+			</tradeshow>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<tradeshow module="tradeshow">
+				<title>Leads</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="tradeshow">
+						<title>View Lead Table</title>
+						<sort_order>0</sort_order>
+						<action>tradeshow/adminhtml_tradeshow</action>
+					</items>
+				</children>
+			</tradeshow>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Fins_Tradeshow>
+							<title>Tradeshow Module</title>
+							<sort_order>10</sort_order>
+						</Fins_Tradeshow>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<tradeshow>
+					<file>tradeshow.xml</file>
+				</tradeshow>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <tradeshow>
+                <class>Fins_Tradeshow_Model</class>
+                <resourceModel>tradeshow_mysql4</resourceModel>
+            </tradeshow>
+            <tradeshow_mysql4>
+                <class>Fins_Tradeshow_Model_Mysql4</class>
+                <entities>
+                    <tradeshow>
+                        <table>tradeshow</table>
+                    </tradeshow>
+                </entities>
+            </tradeshow_mysql4>
+        </models>
+        <resources>
+            <tradeshow_setup>
+                <setup>
+                    <module>Fins_Tradeshow</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tradeshow_setup>
+            <tradeshow_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tradeshow_write>
+            <tradeshow_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tradeshow_read>
+        </resources>
+        <blocks>
+            <tradeshow>
+                <class>Fins_Tradeshow_Block</class>
+            </tradeshow>
+        </blocks>
+        <helpers>
+            <tradeshow>
+                <class>Fins_Tradeshow_Helper</class>
+            </tradeshow>
+        </helpers>
+    </global>
+</config>

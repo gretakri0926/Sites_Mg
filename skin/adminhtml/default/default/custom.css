@@ -1,0 +1,95 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* Colors:
+bright blue: 59a5cd
+light blue:b2d6e8
+dark grey: 484848
+light grey: d8d9d9
+*/
+
+/*------------- generals -------------*/
+a {
+    color:#444;
+
+    font-size:11pt;
+}
+a:hover {
+    color:#888 !important;
+}
+.middle {
+    padding:40px;
+    background:#fff;
+}
+#page-login {
+    background:#b2d6e8 !important;
+}
+input[type=text], .input-text, select {
+
+    padding:5px !important;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+}
+
+
+/*------------- Header -----------*/
+.logo {
+    margin:0px 20px 0 40px;
+    height:48px;
+}
+.footer-logo {
+    height:200px;
+    margin:-50px 5px 0;
+}
+.header {
+    /* background:#59a5cd; */
+    background:#b2d6e8;
+}
+.header-right .super {
+    color:#444;
+}
+.nav-bar {
+    border-top:2px solid #292929;
+    border-bottom:2px solid #292929;
+    background:#484848;
+}
+.go-try {
+    display:none;
+}
+#page-help-link {
+    display:none;
+}
+
+/*-------------- plugins -----------------*/
+#mod-jirafe #logo {
+    display:none;
+}
+#mod-jirafe #wrapper {
+    width:auto !important;
+}
+#jirafe-nav select {
+    height:32px !important;
+}

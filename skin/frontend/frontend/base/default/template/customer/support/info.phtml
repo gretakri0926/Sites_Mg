@@ -1,0 +1,70 @@
+<?php
+/**
+ * Edit customer address template
+ *
+ * @see Mage_Customer_Block_Address_Edit
+ */
+?>
+<div class="page-title">
+    <h1>Contact Your Sales Representative</h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getUrl('customer/support/contactSales') ?>" method="post" id="form-validate">
+    <div class="fieldset">
+        <h2 class="legend">Your Sales Representative</h2>
+        <ul class="form-list">
+            <li class="wide">
+                <label for="street_1" class="required">Sales Representative Name: </label>
+            </li>
+            <li class="wide">
+                <label for="street_1" class="required">Sales Representative Email: </label>
+            </li>
+        </ul>
+    </div>
+    <div class="fieldset">
+        <h2 class="legend">Send Message to </h2>
+        <ul class="form-list">
+            <li class="wide">
+                <label for="street_1" class="required"><em>*</em>Subject</label>
+                <div class="input-box">
+                    <input type="text" name="subject" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="street_1" class="required"><em>*</em>Comment</label>
+                <div class="input-box">
+                   <textarea name="comment"></textarea> 
+                </div>
+            </li>
+        
+            <li class="fields">
+                <div class="field">
+                    <label for="region_id" class="required"><em>*</em>Message Type</label>
+                    <div class="input-box">
+                        <select name="message_type" title="" class="validate-select">
+                           <option value="tech_support">Technical Support</option>
+                           <option value="sales">Sales</option>
+                           <option value="other">Other</option>
+                        </select>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('region_id').setAttribute('defaultValue',  "");
+                        //]]>
+                        </script>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"></p>
+        <p class="back-link"><a href=""><small>&laquo; </small>Back</a></p>
+        <button type="submit" title="" class="button"><span><span>Send Message</span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', , undefined, 'zip');
+//]]>
+</script>

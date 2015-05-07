@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <sales_reps_index_index>
+        <reference name="content">
+            <block type="sales_reps/sales_reps" name="sales_reps" template="sales_reps/sales_reps.phtml" />
+        </reference>
+    </sales_reps_index_index>
+</layout> 

@@ -1,0 +1,49 @@
+<div class="block block-blog">
+    <!--
+<div class="block-title">
+        <strong><span><?php echo Mage::getStoreConfig('blog/blog/title'); ?></span></strong>
+    </div>
+-->
+	<div class="block-content">
+<?php/*
+ if ($posts = $this->getRecent()): ?>
+	<div class="menu-recent">
+		<h5><?php echo Mage::helper('blog')->__('Recent Posts');?></h5>
+		<ul>
+		<?php foreach ($posts as $post): ?>
+			<li><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle();?></a></li>
+		<?php endforeach; ?>
+       	</ul>
+	</div>	
+<?php endif; 
+*/?>
+
+<?php/*
+ if($this->getCategories()->count() && Mage::getStoreConfig('blog/menu/category')): ?>  
+	<div class="menu-categories">
+        <h5><?php echo Mage::helper('blog')->__('Categories');?></h5>
+        <ul>
+<?php $cats = $this->getCategories(); ?>
+<?php foreach ($cats as $cat): ?>
+		<li><a href="<?php echo $cat->getAddress(); ?>" ><?php echo $cat->getTitle();?></a></li>
+<?php endforeach; ?>
+    	</ul>
+	</div>	
+<?php endif;
+*/?>
+		
+		<?php echo $this->getChildHtml('blog_tags');?>
+		<div class="fin-title">Share</div>
+			<div class="share">
+				
+				<div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+				<span class='st_facebook_large' displayText='Facebook'></span>
+				<span class='st_twitter_large' displayText='Tweet'></span>
+				<span class='st_pinterest_large' displayText='Pinterest'></span>
+				<span class='st_email_large' displayText='Email'></span>
+				<span class='st_sharethis_large' displayText='ShareThis'></span>
+	
+			</div>
+		</div>
+	</div>
+</div>

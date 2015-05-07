@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <tradeshow_adminhtml_tradeshow_index>
+        <reference name="content">
+            <block type="tradeshow/adminhtml_tradeshow" name="tradeshow" />
+        </reference>
+    </tradeshow_adminhtml_tradeshow_index>
+</layout>

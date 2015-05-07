@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Fins
+ * @package    Fins_Surfers
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Fins_Surfers>
+            <version>0.1.0</version>
+        </Fins_Surfers>
+    </modules>
+    <frontend>
+        <routers>
+            <surfers>
+                <use>standard</use>
+                <args>
+                    <module>Fins_Surfers</module>
+                    <frontName>surfers</frontName>
+                </args>
+            </surfers>
+        </routers>
+        <layout>
+            <updates>
+                <surfers>
+                    <file>surfers.xml</file>
+                </surfers>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<surfers>
+				<use>admin</use>
+				<args>
+					<module>Fins_Surfers</module>
+					<frontName>surfers</frontName>
+				</args>
+			</surfers>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<surfers module="surfers">
+				<title>Surfers</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="surfers">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>surfers/adminhtml_surfers</action>
+					</items>
+				</children>
+			</surfers>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Fins_Surfers>
+							<title>Surfers Module</title>
+							<sort_order>10</sort_order>
+						</Fins_Surfers>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<surfers>
+					<file>surfers.xml</file>
+				</surfers>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <surfers>
+                <class>Fins_Surfers_Model</class>
+                <resourceModel>surfers_mysql4</resourceModel>
+            </surfers>
+            <surfers_mysql4>
+                <class>Fins_Surfers_Model_Mysql4</class>
+                <entities>
+                    <surfers>
+                        <table>surfers</table>
+                    </surfers>
+                </entities>
+            </surfers_mysql4>
+        </models>
+        <resources>
+            <surfers_setup>
+                <setup>
+                    <module>Fins_Surfers</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </surfers_setup>
+            <surfers_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </surfers_write>
+            <surfers_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </surfers_read>
+        </resources>
+        <blocks>
+            <surfers>
+                <class>Fins_Surfers_Block</class>
+            </surfers>
+        </blocks>
+        <helpers>
+            <surfers>
+                <class>Fins_Surfers_Helper</class>
+            </surfers>
+        </helpers>
+    </global>
+</config>

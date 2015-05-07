@@ -1,0 +1,12 @@
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: #666 2px 2px 4px;
+	-moz-box-shadow: #666 2px 2px 4px;
+	box-shadow: #666 2px 2px 4px;
+	behavior: url(PIE.htc);
+}
+#tooltip h3, #tooltip div { margin: 0; }

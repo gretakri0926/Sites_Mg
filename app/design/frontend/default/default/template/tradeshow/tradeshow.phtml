@@ -1,0 +1,151 @@
+<script src="https://fin-s.com/store/skin/frontend/default/default/fins-product/js/jquery.min.js"></script>
+
+<div id="tradeshow-contact-container">
+
+<div class="left-side">
+    <div class="fieldset">
+        <h2 class="raleway">General Contact</h2>
+<!--         <form id="emailSubmitMainForm" class="form-list" action="<?php echo $this->getUrl('tradeshow/lead/create') ?>" method="post"> -->
+        <form id="emailSubmitMainForm" class="form-list" action="https://www.fin-s.com/store/tradeshow/lead/create/" method="post">
+            <input type="hidden" name="referred_page" value="homepage" />
+            <ul class="form-list">
+            <li class="wide">
+            <label for="name" class="required"><em>*</em>Your First Name:</label>
+            <div class="input-box">
+            <input type="text" name="firstname" value="" title="" class="input-text required-entry" />
+            </div>
+            </li>
+            <li class="wide">
+            <label for="email" class="required"><em>*</em>Your Email:</label>
+            <div class="input-box">
+            <input type="text" name="email" value="" title="" class="input-text required-entry" />
+            </div>
+            </li>
+            <li class="wide">
+                <label for="street_1" class="required">Comment</label>
+                <div class="input-box">
+                   <textarea name="comment"></textarea> 
+                </div>
+            </li>
+            <li class="wide">
+                <label for="newsletter" class="required">Subscribe to Newsletter</label>
+                <div class="input-box">
+                   <input type="checkbox" name="newsletter" value="yes" checked="yes" /> 
+                </div>
+            </li>
+            </ul>
+        <button type="submit" title="" class="button"><span><span>Submit Form</span></span></button>
+        </form>
+
+    </div>
+</div>
+<div class="right-side">
+    <?php if (isset($message)) { echo $message; } ?>
+<form action="https://www.fin-s.com/store/tradeshow/lead/create/" method="post">
+<input type="hidden" name="referred_page" value="lead_collector" />
+
+    <div class="fieldset">
+        <h2 class="raleway">Wholesaler Application</h2>
+        <ul class="form-list">
+            <li class="wide">
+                <label for="name" class="required"><em>*</em>Your First Name:</label>
+                <div class="input-box">
+                    <input type="text" name="firstname" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="last_name" class="required"><em>*</em>Your Last Name:</label>
+                <div class="input-box">
+                    <input type="text" name="lastname" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+
+            <li class="wide">
+                <label for="company_name" class="required">Your Company Name:</label>
+                <div class="input-box">
+                    <input type="text" name="company_name" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="email" class="required"><em>*</em>Your Email:</label>
+                <div class="input-box">
+                    <input type="text" name="email" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="phone" class="required">Your Phone Number:</label>
+                <div class="input-box">
+                    <input type="text" name="phone" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="zip" class="required">Your Zipcode:</label>
+                <div class="input-box">
+                    <input type="text" name="zipcode" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+
+            <li class="fields">
+                <div class="field">
+                    <label for="business_type" class="required">Business Type</label>
+                    <div class="input-box">
+                        <select name="business_type" title="" class="validate-select">
+                           <option value="manufacturer">Board Manufacturer</option>
+                           <option value="retail">Retail Store</option>
+                           <option value="both">Both</option>
+                           <option value="distributor">Distributor</option>
+                           <option value="other">Other</option>
+                        </select>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('region_id').setAttribute('defaultValue',  "");
+                        //]]>
+                        </script>
+                    </div>
+                </div>
+            </li>
+            <li class="wide">
+                <label for="boards_built" class="required">Average Boards Built Per Month:</label>
+                <div class="input-box">
+                    <input type="text" name="boards_built_per_month" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="boards_sold" class="required">Average Boards Sold Per Month:</label>
+                <div class="input-box">
+                    <input type="text" name="boards_sold_per_month" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="after_market_sales" class="required">After Market Fins Sold Per Month:</label>
+                <div class="input-box">
+                    <input type="text" name="aftermarket_fins_sold_per_month" value="" title="" class="input-text required-entry" />
+                </div>
+            </li>
+
+            <li class="wide">
+                <label for="street_1" class="required">Comment</label>
+                <div class="input-box">
+                   <textarea name="comment"></textarea> 
+                </div>
+            </li>
+
+            <li class="wide">
+                <label for="newsletter" class="required">Subscribe to Newsletter</label>
+                <div class="input-box">
+                   <input type="checkbox" name="newsletter" value="yes" checked="yes" /> 
+                </div>
+            </li>
+
+        
+        <button type="submit" title="" class="button"><span><span>Submit Form</span></span></button>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"></p>
+        <p class="back-link"><a href=""><small>&laquo; </small>Back</a></p>
+    </div>
+</form>
+</div>
+
+</div>

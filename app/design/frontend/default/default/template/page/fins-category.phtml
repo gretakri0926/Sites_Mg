@@ -1,0 +1,116 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+
+<?php $skin = "https://fin-s.com/store/skin/frontend/default/default/fins-product/"; ?>
+
+
+<!-- tonikolaev@gmail.com -->
+
+<!--<link rel="stylesheet" type="text/css" href="<?=$skin?>css/styles.css" media="all">-->
+<link rel="stylesheet" type="text/css" href="<?=$skin?>css/stylesheet.css" media="all">
+<link rel="stylesheet" type="text/css" href="<?=$skin?>css/jquery.tooltip.css" media="all">
+<script src="<?=$skin?>js/jquery.min.js"></script>
+
+<script type="text/javascript">	
+	var jQuery = jQuery.noConflict();
+	var $j = jQuery;
+</script>
+<script type="text/javascript">
+	Cufon.replace('.categories-list', {hover:true, fontFamily:'Karbon',fontWeight:'700' } );
+</script>
+<script type="text/javascript" src="/store/skin/frontend/default/default/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/store/skin/frontend/default/default/js/Karbon_Slab_Stencil_700.font.js"></script>
+<script type="text/javascript">	
+	Cufon.replace(".product-name");
+	//Cufon.replace(".pipetka .descr a");
+	Cufon.replace('.categories-list', {hover:true, fontFamily:'Karbon',fontWeight:'700' } );
+</script>
+<!-- tonikolaev@gmail.com -->
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "82201a74-8f1d-475b-85ae-702d5c759533"});</script>
+
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <div class="main-container">
+            <div class="main">               
+                <div class="col-main" style="float:none; width:auto;">
+					<?php //echo $this->getChildHtml('breadcrumbs') ?>
+				    <?php echo $this->getChildHtml('global_messages') ?>
+				    <div class="breadcrumbsWrapper product">
+
+						<div class="breadcrumbs">
+							<ul>
+								<li class="home">
+									<a href="http://fin-s.com/store/" title="Go to Home Page">Home</a>
+									<span>/ </span>
+								</li>
+								<li class="cms_page">
+									<strong>PRODUCTS</strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="product-view-breadcrumb-description" style="margin-left:380px">All fins use the patented SpringLock™ technology to securely attach your fins, yet they
+easy to slide in and out of your board. SpringLock™ technology is designed to last and
+withstand the toughest conditions.</div>
+                    <?php echo $this->getChildHtml('content') ?>
+                </div>                
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

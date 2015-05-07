@@ -1,0 +1,37 @@
+<?php
+
+ $layer = Mage::getSingleton('catalog/layer');
+ $_category = $layer->getCurrentCategory();
+ 
+ $store = Mage::app()->getStore()->getId();
+ $collection = Mage::getModel('catalog/category')	->
+ 				getCollection()						->
+ 				setStoreId($store)					->
+ 				addAttributeToSelect('id')	->
+ 				addAttributeToSelect('url_path')	->
+ 				addAttributeToSelect('name')		->
+ 				addAttributeToFilter('is_active',1)	->
+ 				addAttributeToFilter('level',2)		->
+ 				addAttributeToSort('position', 'asc');
+?>
+
+<div class="categories-list">
+	<?php foreach($collection as $cat):?>
+		<a<?php if($cat->getId() == $_category->getId()):?> class="active"<?php endif;?> href="<?php echo $cat->getUrlPath()?>"><?php echo $this->__($cat->getName());?></a>
+<!-- 		<span style="display:none"><?php echo $cat->getPosition()?></span> -->
+	<?php endforeach;?>
+</div>	
+<style>
+	@font-face {
+	  font-family: KarbonLight;
+	  src: url(Karbon/Karbon-Light.otf) format('opentype');
+	}
+	@font-face {
+	  font-family: KarbonMedium;
+	  src: url(Karbon/Karbon-Medium.otf) format('opentype');
+	}
+	@font-face {
+	  font-family: KarbonRegular;
+	  src: url(Karbon/Karbon-Regular.otf) format('opentype');
+	}
+<style>
